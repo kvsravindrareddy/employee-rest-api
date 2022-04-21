@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * This is the Entity class which persist the {@code Employee} into EMP_TB
+ * with all the required columns
+ */
 @Setter
 @Getter
 @Entity

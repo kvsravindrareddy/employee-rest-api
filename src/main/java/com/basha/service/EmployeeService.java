@@ -48,6 +48,12 @@ public class EmployeeService {
         return employeeData;
     }
 
+    /**
+     * This method provides the implementation to update the employee for the given employee id
+     * @param employeeData
+     * @param id
+     * @return
+     */
     public EmployeeData updateEmployeeById(EmployeeData employeeData, long id) {
         Optional<Employee> employeeOptional = employeeRepo.findById(id);
         EmployeeData employeeDataResult = null;
@@ -66,6 +72,10 @@ public class EmployeeService {
         return employeeDataResult;
     }
 
+    /**
+     * This provides the implementation to delete the employee by id
+     * @param id
+     */
     public void deleteEmployee(long id) {
         employeeRepo.deleteById(id);
     }

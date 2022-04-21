@@ -3,6 +3,9 @@ package com.basha.data;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Model / Input data class for Employee Request
+ */
 @Setter
 @Getter
 public class EmployeeData {

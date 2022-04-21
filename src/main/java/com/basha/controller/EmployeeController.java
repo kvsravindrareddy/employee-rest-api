@@ -2,6 +2,8 @@ package com.basha.controller;
 
 import com.basha.data.EmployeeData;
 import com.basha.service.EmployeeService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -29,9 +31,9 @@ public class EmployeeController {
      * @return {@code EmployeeData}
      */
     @PostMapping(value="/add")
-    public EmployeeData createEmployee(@RequestBody EmployeeData employeeData)
+    public ResponseEntity<EmployeeData> createEmployee(@RequestBody EmployeeData employeeData)
     {
-        return employeeService.createEmployee(employeeData);
+        return new ResponseEntity<>(employeeService.createEmployee(employeeData), HttpStatus.CREATED);
     }
 
     /**
@@ -40,17 +42,28 @@ public class EmployeeController {
      * @return {@code EmployeeData}
      */
     @GetMapping("/find")
-    public EmployeeData findByEmployeeId(@RequestParam("id")long id)
+    public ResponseEntity<EmployeeData> findByEmployeeId(@RequestParam("id")long id)
     {
-        return employeeService.findByEmployeeId(id);
+        return new ResponseEntity<>(employeeService.findByEmployeeId(id), HttpStatus.OK);
     }
 
+    /**
+     * This method to update the {@code Employee} for the given employee id
+     * @param employeeData
+     * @param id
+     * @return
+     */
     @PutMapping("/update")
-    public EmployeeData updateEmployeeById(@RequestBody EmployeeData employeeData,@RequestParam("id")long id)
+    public ResponseEntity<EmployeeData> updateEmployeeById(@RequestBody EmployeeData employeeData,@RequestParam("id")long id)
     {
-        return employeeService.updateEmployeeById(employeeData, id);
+        return new ResponseEntity<EmployeeData>(employeeService.updateEmployeeById(employeeData, id), HttpStatus.OK);
     }
 
+
+    /**
+     * This method to delete the employee for the given employee id
+     * @param id
+     */
     @DeleteMapping("/delete")
     public void deleteEmployee(@RequestParam("id")long id)
     {
