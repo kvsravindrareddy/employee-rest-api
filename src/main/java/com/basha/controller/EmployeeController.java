@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
  * This the Rest Controller to perform the Employee Crud Operations
  */
 @RestController
-@RequestMapping("/emp")
 public class EmployeeController {
 
     /**Create {@code EmployeeService} reference*/
@@ -30,7 +29,7 @@ public class EmployeeController {
      * @param employeeData
      * @return {@code EmployeeData}
      */
-    @PostMapping(value="/add")
+    @PostMapping(value="/emp")
     public ResponseEntity<EmployeeData> createEmployee(@RequestBody EmployeeData employeeData)
     {
         return new ResponseEntity<>(employeeService.createEmployee(employeeData), HttpStatus.CREATED);
@@ -41,7 +40,7 @@ public class EmployeeController {
      * @param id
      * @return {@code EmployeeData}
      */
-    @GetMapping("/find")
+    @GetMapping("/emp")
     public ResponseEntity<EmployeeData> findByEmployeeId(@RequestParam("id")long id)
     {
         return new ResponseEntity<>(employeeService.findByEmployeeId(id), HttpStatus.OK);
@@ -53,7 +52,7 @@ public class EmployeeController {
      * @param id
      * @return
      */
-    @PutMapping("/update")
+    @PutMapping("/emp")
     public ResponseEntity<EmployeeData> updateEmployeeById(@RequestBody EmployeeData employeeData,@RequestParam("id")long id)
     {
         return new ResponseEntity<EmployeeData>(employeeService.updateEmployeeById(employeeData, id), HttpStatus.OK);
@@ -64,7 +63,7 @@ public class EmployeeController {
      * This method to delete the employee for the given employee id
      * @param id
      */
-    @DeleteMapping("/delete")
+    @DeleteMapping("/emp")
     public void deleteEmployee(@RequestParam("id")long id)
     {
         employeeService.deleteEmployee(id);
